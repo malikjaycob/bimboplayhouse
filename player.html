@@ -2,10 +2,19 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
-  html, body { width: 100%; height: 100%; background: #000; overflow: hidden; }
-  video { width: 100%; height: 100%; object-fit: cover; }
+  html { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  body { width: 100%; height: 100%; overflow: hidden; background: #000; }
+  video {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    background: #000;
+  }
 </style>
 </head>
 <body>
@@ -15,10 +24,7 @@
   var src = params.get('src');
   var v = document.getElementById('v');
   if (src) {
-    var s = document.createElement('source');
-    s.src = decodeURIComponent(src);
-    s.type = 'video/mp4';
-    v.appendChild(s);
+    v.src = decodeURIComponent(src);
     v.muted = true;
     v.load();
     v.play().catch(function() {
